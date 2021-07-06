@@ -1,12 +1,15 @@
-import react from "react";
+import React from "react";
+import InfoTable from "./tables/InfoTable";
+import ProjectTable from "./tables/ProjectTable";
 
 
-function Form() {
+function Info() {
   return (
     <div>
-        <h1>hello im info</h1>
+        <InfoTable />
+        <ProjectTable />
     </div>
   );
 }
 
-export default Form;
+export default Info;

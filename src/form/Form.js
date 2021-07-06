@@ -1,5 +1,5 @@
-import react from "react";
-import { Card, Button, Container } from "react-bootstrap";
+import React from "react";
+import { Card, Container } from "react-bootstrap";
 import './Form.css';
 import batPic from './bat.jpg';
 import Inputs from "./inputs/Inputs";

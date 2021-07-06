@@ -1,29 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import "../Form.css";
-import { Redirect, useHistory } from "react-router-dom";
-import { DataContext } from "../../context/ContextWrapper";
+import { useHistory } from "react-router-dom";
+import LoginReq from "../../../API/Authentication.api";
+import { useAuthContext } from "../../../context/AuthContext.js";
+import { setToken } from "../../../utils/tokenStorage";
 
-function Inputs() {
-  const [MoveToInfo, setMoveToInfo] = useState(false);
-  const {value, setValue} = useContext(DataContext);
+function LoginForm() {
+  const {value, setValue} = useAuthContext();
   const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  //   console.log(errors);
+
   const onSubmit = (data) =>
-    axios
-      .post(
-        "https://private-052d6-testapi4528.apiary-mock.com/authenticate",
-        data
-      )
-      .then((response) => setValue(response.data[0]))
-      .then(history.push('/info'));
+    LoginReq(data)
+      .then((response) => {
+        setValue(response.data[0]);
+        setToken(response.data[0].token)
+        history.push('/info');
+      })
 
 
   return (
@@ -49,7 +48,7 @@ function Inputs() {
           {...register("Password", {
             required: true,
             min: 8,
-            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/i,
+            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/i
           })}
         />
         {errors.Password && (
@@ -65,4 +64,4 @@ function Inputs() {
   );
 }
 
-export default Inputs;
+export default LoginForm;

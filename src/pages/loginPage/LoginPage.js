@@ -2,9 +2,9 @@ import React from "react";
 import { Card, Container } from "react-bootstrap";
 import './Form.css';
 import batPic from './bat.jpg';
-import Inputs from "./inputs/Inputs";
+import Inputs from "./LoginForm/LoginForm";
 
-function Form() {
+function LoginPage() {
   return (
     <Container id="cardContainer">
       <Card style={{ width: "22rem"}}>
@@ -18,4 +18,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default LoginPage;

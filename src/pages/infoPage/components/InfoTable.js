@@ -4,7 +4,7 @@ import Table from "./Table.js";
 import columns from './InfoColumns.js';
 
 function InfoTable() {
-  const { value, setValue } = useAuthContext();
+  const { value } = useAuthContext();
   
   if (!value) {
     return (

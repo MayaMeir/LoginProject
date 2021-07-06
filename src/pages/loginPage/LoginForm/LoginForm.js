@@ -20,7 +20,7 @@ function LoginForm() {
     LoginReq(data)
       .then((response) => {
         setValue(response.data[0]);
-        setToken(response.data[0].token)
+        setToken(response.data[0].token);
         history.push('/info');
       })
 

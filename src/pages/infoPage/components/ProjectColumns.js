@@ -25,6 +25,12 @@
           {
             Header: 'Made Deadline',
             accessor: 'madeDadeline',
+            Cell: ({value})=>{
+              if(value){
+                return 'V'
+              }
+              return 'X'
+            }
           },
         ],
       }
